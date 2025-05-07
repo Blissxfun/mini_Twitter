@@ -26,7 +26,7 @@ HTML = """
     input, button {
       padding: 10px;
       margin: 5px 0;
-      width: 100%%;
+      width: 100%;
       border-radius: 5px;
       border: 1px solid #ccc;
     }
@@ -75,25 +75,23 @@ def home():
         tweet = request.form["tweet"]
         nuevo_tweet = {"usuario": usuario, "contenido": tweet, "likes": 0}
         tweets.append(nuevo_tweet)
-        
+
         # Guardar tweets al archivo
         with open(ARCHIVO, "w", encoding="utf-8") as f:
             json.dump(tweets, f, ensure_ascii=False, indent=2)
-        
+
         return redirect("/")
     return render_template_string(HTML, tweets=reversed(tweets))
 
 @app.route("/like/<int:tweet_id>", methods=["POST"])
 def like(tweet_id):
     tweets[tweet_id]["likes"] += 1
-    
+
     # Guardar tweets actualizados
     with open(ARCHIVO, "w", encoding="utf-8") as f:
         json.dump(tweets, f, ensure_ascii=False, indent=2)
-    
-    return redirect("/")
 
-app = Flask(__name__)
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
