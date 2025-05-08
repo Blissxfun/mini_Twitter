@@ -1,0 +1,89 @@
+body { 
+  font-family: 'Arial', sans-serif; 
+  max-width: 600px; 
+  margin: auto; 
+  background: #f7f7f7; 
+  padding: 20px; 
+}
+
+h1 { 
+  color: #4A90E2; 
+  text-align: center; 
+}
+
+form { 
+  margin-bottom: 20px; 
+}
+
+input, button { 
+  padding: 12px; 
+  margin: 5px 0; 
+  width: 100%; 
+  border-radius: 5px; 
+  border: 1px solid #ccc; 
+}
+
+button { 
+  background: #4A90E2; 
+  color: white; 
+  border: none; 
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1DA1F2;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0d8ddb;
+}
+
+
+.tweet { 
+  background: white; 
+  padding: 15px; 
+  border-radius: 10px; 
+  margin-bottom: 15px; 
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+}
+
+.username { 
+  font-weight: bold; 
+  color: #555; 
+}
+
+.content { 
+  margin-top: 5px; 
+}
+
+.likes { 
+  color: #4A90E2; 
+}
+
+.comments { 
+  font-size: 0.9em; 
+  color: #888; 
+}
+
+.comment-form { 
+  margin-top: 10px; 
+}
+
+.delete-btn { 
+  color: red; 
+  cursor: pointer; 
+  font-size: 0.9em; 
+}
+
+@media (max-width: 600px) {
+  body { 
+    padding: 10px; 
+  }
+}

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>BlissTalks 🐦</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>BlissTalks 🐦</h1>
+  <form method="post">
+    <input name="tweet" placeholder="Escribe tu tweet" required>
+    <button type="submit">Twittear</button>
+  </form>
+
+  <h2>Tweets recientes:</h2>
+  {% for t in tweets %}
+    <div class="tweet">
+      <div class="username">@{{ t['usuario'] }}</div>
+      <div class="content">{{ t['contenido'] }}</div>
+      <div class="likes">
+        <span>{{ t['likes'] }} Likes</span>
+        <form method="post" action="/like/{{ loop.index0 }}">
+          <button type="submit">Like</button>
+        </form>
+      </div>
+    </div>
+  {% endfor %}
+</body>
+</html>
