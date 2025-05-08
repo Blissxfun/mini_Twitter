@@ -7,6 +7,7 @@
 </head>
 <body>
   <h1>BlissTalks 🐦</h1>
+
   <form method="post">
     <input name="tweet" placeholder="Escribe tu tweet" required>
     <button type="submit">Twittear</button>
@@ -15,14 +16,20 @@
   <h2>Tweets recientes:</h2>
   {% for t in tweets %}
     <div class="tweet">
-      <div class="username">@{{ t['usuario'] }}</div>
-       {% if t['profile_picture'] %}
-            <img src="{{ url_for('static', filename='uploads/' + t['profile_picture']) }}" alt="Foto de perfil" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+      <div class="user-info" style="display: flex; align-items: center;">
+        {% if t.user.profile_picture %}
+          <img src="{{ url_for('static', filename='uploads/' + t.user.profile_picture) }}" 
+               alt="Foto de perfil" 
+               style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
         {% endif %}
-      <div class="content">{{ t['contenido'] }}</div>
+        <div class="username">@{{ t.user.username }}</div>
+      </div>
+
+      <div class="content">{{ t.content }}</div>
+
       <div class="likes">
-        <span>{{ t['likes'] }} Likes</span>
-        <form method="post" action="/like/{{ loop.index0 }}">
+        <span>{{ t.likes }} Likes</span>
+        <form method="post" action="{{ url_for('like', tweet_id=t.id) }}">
           <button type="submit">Like</button>
         </form>
       </div>
