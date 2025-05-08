@@ -16,6 +16,9 @@
   {% for t in tweets %}
     <div class="tweet">
       <div class="username">@{{ t['usuario'] }}</div>
+       {% if t['profile_picture'] %}
+            <img src="{{ url_for('static', filename='uploads/' + t['profile_picture']) }}" alt="Foto de perfil" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+        {% endif %}
       <div class="content">{{ t['contenido'] }}</div>
       <div class="likes">
         <span>{{ t['likes'] }} Likes</span>
