@@ -50,7 +50,7 @@ def home():
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 profile_picture = filename
 
-        new_tweet = Tweet(content=content, user=user)
+        new_tweet = Tweet(content=content, user_id=user.id)
         db.session.add(new_tweet)
         db.session.commit()
 
